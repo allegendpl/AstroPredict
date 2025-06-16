@@ -27,8 +27,8 @@ def load_data(real_file='data/solar_flare_real.csv'):
     """General wrapper to return real or fake data depending on availability."""
     try:
         df = load_real_data(real_file)
-        print("✅ Loaded real solar flare data.")
+        print(" Loaded real solar flare data.")
     except FileNotFoundError:
         df = generate_fake_data()
-        print("⚡ File not found. Loading fake data.")
+        print(" File not found. Loading fake data.")
     return df
