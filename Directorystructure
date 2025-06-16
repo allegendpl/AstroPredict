@@ -1,0 +1,25 @@
+astropredict/
+│
+├── data/
+│ ├─ solar_flare_real.csv
+│ └─ solar_flare_fake.csv
+│
+├── models/
+│ └─ trained_models/
+│     ├─ LogisticRegression.pkl
+│     ├─ SVC.pkl
+│     └─ RandomForestClassifier.pkl
+│
+├── src/
+│ ├─ data_loader.py
+│ ├─ model_trainer.py
+│ ├─ visualization.py
+│ ├─ evaluation.py
+│ └─ config.py
+│
+├── static/
+│ └─ logo.png
+│
+├── app.py
+├── requirements.txt
+├── README.md
