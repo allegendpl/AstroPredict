@@ -1,5 +1,8 @@
 # app.py
+import os
+os.system('pip install scikit-learn')
 
+from sklearn.model_selection import cross_val_score, train_test_split, GridSearchCV
 import streamlit as st
 import pandas as pd
 from data_loader import load_data
