@@ -3,9 +3,9 @@
 import streamlit as st
 import pandas as pd
 from data_loader import load_data
-from src.model_trainer import train_models, split_data, cross_validate_models, save_models
-from src.evaluation import evaluate_all, save_report
-from src.visualization import plot_feature_distribution, plot_confusion_matrix, plot_roc_curve
+from model_trainer import train_models, split_data, cross_validate_models, save_models
+from evaluation import evaluate_all, save_report
+from visualization import plot_feature_distribution, plot_confusion_matrix, plot_roc_curve
 
 # Page setup
 st.set_page_config(page_title="AstroPredict - Solar Flare AI Predictor", layout="wide")
