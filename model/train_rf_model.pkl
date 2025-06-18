@@ -1,0 +1,34 @@
+import pandas as pd
+import numpy as np
+import os
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.preprocessing import LabelEncoder
+from sklearn.model_selection import train_test_split
+import joblib
+
+# 1. Load your fake solar flare dataset
+df = pd.read_csv("data/fake_solar_data.csv")
+
+# 2. Encode the target column ("flare_class")
+le = LabelEncoder()
+df['flare_class_encoded'] = le.fit_transform(df['flare_class'])
+
+# 3. Select features and target
+X = df[['sunspot_area', 'sunspot_count', 'magnetic_index', 'x_ray_flux', 'radio_flux']]
+y = df['flare_class_encoded']
+
+# 4. Train/test split
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# 5. Train a Random Forest classifier
+clf = RandomForestClassifier(n_estimators=100, random_state=42)
+clf.fit(X_train, y_train)
+
+# 6. Save the model to models/rf_model.pkl
+os.makedirs("models", exist_ok=True)
+joblib.dump(clf, "models/rf_model.pkl")
+
+# 7. Save the label encoder too
+joblib.dump(le, "models/label_encoder.pkl")
+
+print(" Model and label encoder saved to models/ folder.")
