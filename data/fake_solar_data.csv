@@ -1,0 +1,42 @@
+import pandas as pd
+import numpy as np
+import random
+
+# Set random seed for reproducibility
+np.random.seed(42)
+
+# Number of samples
+n = 1000
+
+# Create fake features
+data = {
+    "sunspot_area": np.random.normal(loc=300, scale=100, size=n).astype(int),         # Sunspot area in millionths of solar hemisphere
+    "sunspot_count": np.random.poisson(lam=10, size=n),                               # Number of sunspots
+    "magnetic_index": np.random.uniform(0, 1, size=n),                                # Simulated magnetic complexity index
+    "x_ray_flux": np.random.exponential(scale=1e-6, size=n),                          # X-ray flux in W/m^2
+    "radio_flux": np.random.normal(loc=100, scale=10, size=n),                        # Solar radio flux in sfu
+}
+
+# Simulate flare classes based on made-up thresholds
+def assign_flare_class(row):
+    if row["x_ray_flux"] > 1e-4:
+        return "X"
+    elif row["x_ray_flux"] > 1e-5:
+        return "M"
+    elif row["x_ray_flux"] > 1e-6:
+        return "C"
+    elif row["x_ray_flux"] > 1e-7:
+        return "B"
+    else:
+        return "A"
+
+df = pd.DataFrame(data)
+df["flare_class"] = df.apply(assign_flare_class, axis=1)
+
+# Shuffle the dataset
+df = df.sample(frac=1).reset_index(drop=True)
+
+# Save to CSV
+df.to_csv("data/fake_solar_data.csv", index=False)
+
+print(" fake_solar_data.csv saved to /data/")
