@@ -1,0 +1,9 @@
+scikit-learn
+streamlit
+pandas
+numpy
+matplotlib
+seaborn
+git add requirements.txt
+git commit -m "Fix: Add scikit-learn to requirements"
+git push
