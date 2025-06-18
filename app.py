@@ -1,10 +1,11 @@
 # app.py
 import os
 import pandas as pd
-from data_loader import load_data
+from src.data_loader import load_data
 from model_trainer import train_models, split_data, cross_validate_models, save_models
 from evaluation import evaluate_all, save_report
 from visualization import plot_feature_distribution, plot_confusion_matrix, plot_roc_curve
+from src.utils import plot_feature_importance, plot_confusion_matrix, display_classification_report
 
 # Page setup
 st.set_page_config(page_title="AstroPredict - Solar Flare AI Predictor", layout="wide")
