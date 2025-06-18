@@ -1,6 +1,18 @@
 # app.py
 import os
 import pandas as pd
+import joblib
+
+model = joblib.load("models/rf_model.pkl")
+label_encoder = joblib.load("models/label_encoder.pkl")
+
+# To make a prediction:
+input_data = [[250, 12, 0.55, 3e-6, 105]]  # Example input
+prediction = model.predict(input_data)
+predicted_class = label_encoder.inverse_transform(prediction)[0]
+
+st.write("Predicted Flare Class:", predicted_class)
+
 from src.data_loader import load_data
 from model_trainer import train_models, split_data, cross_validate_models, save_models
 from evaluation import evaluate_all, save_report
