@@ -5,7 +5,9 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.preprocessing import LabelEncoder
 from sklearn.model_selection import train_test_split
 import joblib
-
+git add models/train_rf_model.pkl
+git commit -m "Add trained model"
+git push
 # 1. Load your fake solar flare dataset
 df = pd.read_csv("data/fake_solar_data.csv")
 
